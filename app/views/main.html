@@ -1,11 +1,17 @@
 <div class="hero-unit">
   <span>{{structures.length}} structures exist</span>
   <a href='#' ng-click='addObject(4, 5)'>Add Power Plant</a>
+  <div class='object-types'>
+    <h3>Pick your object type</h3>
+    <ul ng-repeat="objectType in objectTypes">
+      <li class='selected-{{objectType.selected}}'><a href='#' ng-click='setObjectType(objectType)'>{{objectType.name}}</a></li>
+    </ul>
+  </div>
   <div class='board'>
     <div ng-repeat="structure in structures">
       <div style='top: {{structure.y * 20}}px; left:
         {{structure.x * 20}}px;' data-id={{structure.id}} class='structure
-        {{structure.type}}'>
+        {{structure.type}} {{structure.state}}'>
       </div>
     </div>
     <div ng-repeat="mapCell in mapCells">

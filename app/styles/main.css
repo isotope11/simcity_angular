@@ -28,3 +28,22 @@
 .powerplant {
   background: #bbb;
 }
+
+.house {
+  background: yellow;
+}
+
+.house.unpowered {
+  border-right: 1px red solid;
+}
+
+.object-types {
+  margin-left: 500px;
+}
+
+.object-types li {
+}
+
+.selected-true {
+  background: #0e0;
+}
