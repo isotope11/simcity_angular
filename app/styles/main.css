@@ -1,16 +1,28 @@
 /* Will be compiled down to a single stylesheet with your sass files */
+
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 .board {
   position: relative;
 }
-.structure {
+
+.map-cell, .structure {
   position: absolute;
   width: 20px;
   height: 20px;
+}
+
+.map-cell {
+}
+
+.structure {
   background: #ddd;
 }
 
 .actor-power {
   background: yellow;
+  opacity: 0.5;
 }
 
 .powerplant {

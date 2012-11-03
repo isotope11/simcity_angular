@@ -17,6 +17,12 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
         //{ id: 1, x: 10, y: 20 },
         //{ id: 2, x: 30, y: 40 }
       ];
+      $rootScope.mapCells = [];
+      (10).times(function(x){
+        (10).times(function(y){
+          $rootScope.mapCells.push({ x: x, y: y });
+        });
+      });
       var updateMap = function(map){
         // Update existing objects and add new ones
         map.each(function(object){
@@ -32,8 +38,6 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
       };
       var addStructure = function(data){
         // Map the x and y to 20x, so they're more obviously visible...
-        data.x = data.x * 20;
-        data.y = data.y * 20;
         var existingStructure = $rootScope.structures.find(function(s){ return s.id == data.id; });
         // First, see if this structure already exists in the structures
         if(existingStructure){
@@ -46,9 +50,9 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
       }
       //set up a websocket listener to push into this array
       var wsUri = 'ws://127.0.0.1:1234/structures';
-      var websocket = new WebSocket(wsUri);
-      websocket.onopen    = function(evt) { console.log('open'); console.log(evt);  };
-      websocket.onclose   = function(evt) { console.log('close'); console.log(evt); };
-      websocket.onmessage = function(evt) { updateMap(JSON.parse(evt.data));     };
-      websocket.onerror   = function(evt) { console.log('error'); console.log(evt); };
+      $rootScope.websocket = new WebSocket(wsUri);
+      $rootScope.websocket.onopen    = function(evt) { console.log('open'); console.log(evt);  };
+      $rootScope.websocket.onclose   = function(evt) { console.log('close'); console.log(evt); };
+      $rootScope.websocket.onmessage = function(evt) { updateMap(JSON.parse(evt.data));     };
+      $rootScope.websocket.onerror   = function(evt) { console.log('error'); console.log(evt); };
   });
