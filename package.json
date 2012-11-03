@@ -1,0 +1,10 @@
+{
+  "author": "Josh Adams",
+  "name": "simcity_webapp",
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "testacular": "*"
+  }
+}

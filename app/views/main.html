@@ -1,0 +1,11 @@
+<div class="hero-unit">
+  <span>{{structures.length}} structures exist</span>
+  <div class='board'>
+    <div ng-repeat="structure in structures">
+      <div style='top: {{structure.y}}px; left:
+        {{structure.x}}px;' data-id={{structure.id}} class='structure
+        {{structure.type}}'>
+      </div>
+    </div>
+  </div>
+</div>
