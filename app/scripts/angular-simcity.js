@@ -23,6 +23,19 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
           $rootScope.mapCells.push({ x: x, y: y });
         });
       });
+      $rootScope.objectTypes = [
+        { name: 'road', selected: true },
+        { name: 'powerplant', selected: false },
+        { name: 'house', selected: false },
+        { name: 'garbagedump', selected: false },
+        { name: 'waterpump', selected: false }
+      ];
+      $rootScope.selectedObject = function(){ return $rootScope.objectTypes.find(function(ot){ return ot.selected; });};
+      $rootScope.setObjectType = function(o){
+        console.log(o);
+        $rootScope.objectTypes.each(function(ot){ ot.selected = false; });
+        o.selected = true;
+      };
       var updateMap = function(map){
         // Update existing objects and add new ones
         map.each(function(object){
