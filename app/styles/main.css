@@ -117,16 +117,12 @@
   background-color: blue;
 }
 
-.object-types {
-  left: 500px;
-  position: absolute;
-}
-
-.object-types li {
-}
-
 .selected-true {
-  background: #0e0;
+  border: 2px solid green;
+}
+
+.selected-false {
+  border: 2px solid #eee;
 }
 
 .grass {
@@ -135,4 +131,32 @@
 .road {
   background-color: transparent;
   background-position: -32px 0;
+}
+
+.toolbox {
+  right: 0;
+  position: absolute;
+  width: 200px;
+}
+
+.toolbox ul{
+  padding: 0;
+}
+
+.object-types li{
+  display: inline-block;
+  list-style-type: none;
+  width: 32px;
+  height: 32px;
+  margin-right: 1em;
+}
+
+.object-types li a{
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.object-types li a span{
+  visibility: hidden;
 }

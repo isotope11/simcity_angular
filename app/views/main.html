@@ -1,11 +1,23 @@
 <div class="hero-unit">
   <span>{{structures.length}} structures exist</span>
-  <a href='#' ng-click='addObject(4, 5)'>Add Power Plant</a>
-  <div class='object-types'>
-    <h3>Pick your object type</h3>
-    <ul>
-      <li  ng-repeat="objectType in objectTypes" class='selected-{{objectType.selected}}'><a href='#' ng-click='setObjectType(objectType)'>{{objectType.name}}</a></li>
+  <div class='toolbox'>
+    <h3>Pick your tool</h3>
+    <ul class='tools'>
+      <li  ng-repeat="tool in tools" class='selected-{{tool.selected}}'><a
+        href='#' ng-click='setTool(tool)'>{{tool.name}}</a></li>
     </ul>
+    <div ng-switch on="selectedTool.name">
+      <div ng-switch-when="build">
+        <h3>Pick your object type</h3>
+        <ul class='object-types'>
+          <li  ng-repeat="objectType in objectTypes"
+          class='selected-{{objectType.selected}} structure {{objectType.name}}'>
+            <a href='#'
+              ng-click='setObjectType(objectType)' title='{{objectType.name}}'><span>{{objectType.name}}</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
   <div class='board'>
     <div ng-repeat="mapCell in mapCells" style='top: {{mapCell.y *
@@ -35,6 +47,7 @@
       <div ng-switch-default></div>
     </div>
     <a ng-repeat="mapCell in mapCells" href='#' style='top: {{mapCell.y *
-      32}}px; left: {{mapCell.x * 32}}px;' class='map-cell tile' ng-click='addObject(mapCell.x,mapCell.y)'></a>
+      32}}px; left: {{mapCell.x * 32}}px;' class='map-cell tile'
+      ng-click='executeTool(mapCell.x,mapCell.y)'></a>
   </div>
 </div>

@@ -13,16 +13,15 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
       });
   }])
   .run(function($rootScope){
-      $rootScope.structures = [
-        //{ id: 1, x: 10, y: 20 },
-        //{ id: 2, x: 30, y: 40 }
-      ];
+      $rootScope.structures = [];
       $rootScope.mapCells = [];
       (10).times(function(x){
         (10).times(function(y){
           $rootScope.mapCells.push({ x: x, y: y });
         });
       });
+
+      // *** TOOLBOX ***
       $rootScope.objectTypes = [
         { name: 'road', selected: true },
         { name: 'powerplant', selected: false },
@@ -30,12 +29,26 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
         { name: 'garbagedump', selected: false },
         { name: 'waterpump', selected: false }
       ];
-      $rootScope.selectedObject = function(){ return $rootScope.objectTypes.find(function(ot){ return ot.selected; });};
+      $rootScope.selectedObject = $rootScope.objectTypes[0];
       $rootScope.setObjectType = function(o){
-        console.log(o);
         $rootScope.objectTypes.each(function(ot){ ot.selected = false; });
+        $rootScope.selectedObject = o;
         o.selected = true;
       };
+
+      $rootScope.tools = [
+        { name: 'build',  selected: true },
+        { name: 'remove', selected: false }
+      ];
+      $rootScope.selectedTool = $rootScope.tools[0];
+      $rootScope.setTool = function(tool){
+        $rootScope.tools.each(function(tool){ tool.selected = false; });
+        $rootScope.selectedTool = tool;
+        tool.selected = true;
+      };
+      // *** END TOOLBOX ***
+
+      // Handle incoming map messages....
       var updateMap = function(map){
         // Update existing objects and add new ones
         map.each(function(object){
