@@ -18,21 +18,11 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
         //{ id: 2, x: 30, y: 40 }
       ];
       $rootScope.mapCells = [];
-      $rootScope.objectTypes = [
-        { name: 'road', selected: true },
-        { name: 'power-plant', selected: false },
-        { name: 'house', selected: false }
-      ];
       (10).times(function(x){
         (10).times(function(y){
           $rootScope.mapCells.push({ x: x, y: y });
         });
       });
-      $rootScope.selectedObject = function(){ return $rootScope.objectTypes.find(function(ot){ return ot.selected; });};
-      $rootScope.setObjectType = function(o){
-        $rootScope.objectTypes.each(function(ot){ ot.selected = false; });
-        o.selected = true;
-      };
       var updateMap = function(map){
         // Update existing objects and add new ones
         map.each(function(object){
@@ -63,6 +53,6 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
       $rootScope.websocket = new WebSocket(wsUri);
       $rootScope.websocket.onopen    = function(evt) { console.log('open'); console.log(evt);  };
       $rootScope.websocket.onclose   = function(evt) { console.log('close'); console.log(evt); };
-      $rootScope.websocket.onmessage = function(evt) { updateMap(JSON.parse(evt.data));     };
+      $rootScope.websocket.onmessage = function(evt) { updateMap(angular.fromJson(evt.data));     };
       $rootScope.websocket.onerror   = function(evt) { console.log('error'); console.log(evt); };
   });

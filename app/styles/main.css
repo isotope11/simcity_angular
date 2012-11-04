@@ -7,38 +7,119 @@
   position: relative;
 }
 
-.map-cell, .structure {
+.map-cell, .structure-wrapper, .tile {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
 }
 
-.map-cell {
+.map-cell:hover{
+  background-color: red;
+  opacity: 0.1;
 }
 
-.structure {
-  background: #ddd;
+.tile, .structure {
+  background-image: url('../images/magecity_0.png');
+  width: 32px;
+  height: 32px;
+  background-position: 9999px 9999px;
+  background-repeat: no-repeat;
 }
 
 .actor-power {
-  background: yellow;
-  opacity: 0.5;
+  background-position: -96px 0;
+}
+.actor-water {
+  position: relative;
+}
+.actor-water .water-drop {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 5px;
+  height: 5px;
+  background: blue;
+}
+.actor-garbage {
+  background: green;
+  opacity: 0.1;
 }
 
 .powerplant {
-  background: #bbb;
-}
-
-.house {
   background: yellow;
 }
 
-.house.unpowered {
-  border-right: 1px red solid;
+.house {
+  position: relative;
+}
+
+.house .tile{
+  position: absolute;
+}
+
+.house-roof-top-left {
+  top: -96px;
+  background-position: 0 -736px;
+}
+.house-roof-top-right {
+  top: -96px;
+  left: 32px;
+  background-position: -64px -736px;
+}
+.house-roof-bottom-left {
+  top: -64px;
+  background-position: 0 -768px;
+}
+.house-roof-bottom-right {
+  top: -64px;
+  left: 32px;
+  background-position: -64px -768px;
+}
+.house-base-top-left {
+  top: -32px;
+  background-position: 0 -800px;
+}
+.house-base-top-right {
+  top: -32px;
+  left: 32px;
+  background-position: -64px -800px;
+}
+.house-base-bottom-left {
+  background-position: -32px -768px;
+}
+.house-base-bottom-right {
+  left: 32px;
+  background-position: -32px -768px;
+}
+
+.waterpump {
+  background: blue;
+}
+
+.garbagedump {
+  background: green;
+}
+
+.house-state{
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 0;
+}
+
+.house-state.unpowered {
+  right: 0;
+  background-color: red;
+}
+
+.house-state.unwatered {
+  right: 5px;
+  background-color: blue;
 }
 
 .object-types {
-  margin-left: 500px;
+  left: 500px;
+  position: absolute;
 }
 
 .object-types li {
@@ -46,4 +127,12 @@
 
 .selected-true {
   background: #0e0;
+}
+
+.grass {
+  background-position: 0 0;
+}
+.road {
+  background-color: transparent;
+  background-position: -32px 0;
 }

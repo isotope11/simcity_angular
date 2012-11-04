@@ -3,19 +3,38 @@
   <a href='#' ng-click='addObject(4, 5)'>Add Power Plant</a>
   <div class='object-types'>
     <h3>Pick your object type</h3>
-    <ul ng-repeat="objectType in objectTypes">
-      <li class='selected-{{objectType.selected}}'><a href='#' ng-click='setObjectType(objectType)'>{{objectType.name}}</a></li>
+    <ul>
+      <li  ng-repeat="objectType in objectTypes" class='selected-{{objectType.selected}}'><a href='#' ng-click='setObjectType(objectType)'>{{objectType.name}}</a></li>
     </ul>
   </div>
   <div class='board'>
-    <div ng-repeat="structure in structures">
-      <div style='top: {{structure.y * 20}}px; left:
-        {{structure.x * 20}}px;' data-id={{structure.id}} class='structure
-        {{structure.type}} {{structure.state}}'>
+    <div ng-repeat="mapCell in mapCells" style='top: {{mapCell.y *
+      32}}px; left: {{mapCell.x * 32}}px;' class='tile grass'></div>
+    <div class='structure-wrapper' ng-repeat='structure in structures' style='top: {{structure.y * 32}}px; left:
+      {{structure.x * 32}}px;' data-id={{structure.id}} ng-switch on="structure.type">
+      <div ng-switch-when="structure-road" class='structure road'></div>
+      <div ng-switch-when="powerplant" class='structure powerplant'></div>
+      <div ng-switch-when="waterpump" class='structure waterpump'></div>
+      <div ng-switch-when="actor-water" class='structure actor-water'>
+        <div class='water-drop'></div>
       </div>
+      <div ng-switch-when="actor-garbage" class='structure actor-garbage'></div>
+      <div ng-switch-when="actor-power" class='structure actor-power'></div>
+      <div ng-switch-when="house" class='structure house'>
+        <div class='tile house-roof-top-left'></div>
+        <div class='tile house-roof-top-right'></div>
+        <div class='tile house-roof-bottom-left'></div>
+        <div class='tile house-roof-bottom-right'></div>
+        <div class='tile house-base-top-left'></div>
+        <div class='tile house-base-top-right'></div>
+        <div class='tile house-base-bottom-left'></div>
+        <div class='tile house-base-bottom-right'></div>
+        <div class='house-state unpowered' ng-hide='structure.powered'></div>
+        <div class='house-state unwatered' ng-hide='structure.watered'></div>
+      </div>
+      <div ng-switch-default></div>
     </div>
-    <div ng-repeat="mapCell in mapCells">
-      <a href='#' style='top: {{mapCell.y * 20}}px; left: {{mapCell.x * 20}}px;' class='map-cell' ng-click='addObject(mapCell.x,mapCell.y)'></a>
-    </div>
+    <a ng-repeat="mapCell in mapCells" href='#' style='top: {{mapCell.y *
+      32}}px; left: {{mapCell.x * 32}}px;' class='map-cell tile' ng-click='addObject(mapCell.x,mapCell.y)'></a>
   </div>
 </div>
