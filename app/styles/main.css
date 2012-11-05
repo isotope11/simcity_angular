@@ -160,3 +160,33 @@
 .object-types li a span{
   visibility: hidden;
 }
+
+.tools li{
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.tools li a{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-position: 50% 50%;
+}
+.tools li.selected-true{
+  background-color: #eee;
+}
+
+.tools li a span{
+  visibility: hidden;
+}
+
+.tools a.build{
+  background-image: url('../images/glyphicons_free/glyphicons_375_classic_hammer.png');
+  background-repeat: no-repeat;
+}
+
+.tools a.remove{
+  background-image: url('../images/glyphicons_free/glyphicons_207_remove_2.png');
+  background-repeat: no-repeat;
+}

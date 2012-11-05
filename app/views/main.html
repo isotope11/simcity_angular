@@ -3,8 +3,8 @@
   <div class='toolbox'>
     <h3>Pick your tool</h3>
     <ul class='tools'>
-      <li  ng-repeat="tool in tools" class='selected-{{tool.selected}}'><a
-        href='#' ng-click='setTool(tool)'>{{tool.name}}</a></li>
+      <li ng-repeat="tool in tools" class='selected-{{tool.selected}}'><a
+        href='#' ng-click='setTool(tool)' class='{{tool.name}}'><span>{{tool.name}}</span></a></li>
     </ul>
     <div ng-switch on="selectedTool.name">
       <div ng-switch-when="build">
