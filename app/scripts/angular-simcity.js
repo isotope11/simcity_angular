@@ -15,8 +15,8 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
   .run(function($rootScope){
       $rootScope.structures = [];
       $rootScope.mapCells = [];
-      (10).times(function(x){
-        (10).times(function(y){
+      (20).times(function(x){
+        (20).times(function(y){
           $rootScope.mapCells.push({ x: x, y: y });
         });
       });

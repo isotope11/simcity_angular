@@ -3,8 +3,9 @@
   <div class='toolbox'>
     <h3>Pick your tool</h3>
     <ul class='tools'>
-      <li ng-repeat="tool in tools" class='selected-{{tool.selected}}'><a
-        href='#' ng-click='setTool(tool)' class='{{tool.name}}'><span>{{tool.name}}</span></a></li>
+      <li ng-repeat="tool in tools" class='selected-{{tool.selected}}'>
+        <a ng-click='setTool(tool)' class='{{tool.name}}'><span>{{tool.name}}</span></a>
+      </li>
     </ul>
     <div ng-switch on="selectedTool.name">
       <div ng-switch-when="build">
@@ -12,8 +13,7 @@
         <ul class='object-types'>
           <li  ng-repeat="objectType in objectTypes"
           class='selected-{{objectType.selected}} structure {{objectType.name}}'>
-            <a href='#'
-              ng-click='setObjectType(objectType)' title='{{objectType.name}}'><span>{{objectType.name}}</span></a>
+            <a ng-click='setObjectType(objectType)' title='{{objectType.name}}'><span>{{objectType.name}}</span></a>
           </li>
         </ul>
       </div>
@@ -46,7 +46,7 @@
       </div>
       <div ng-switch-default></div>
     </div>
-    <a ng-repeat="mapCell in mapCells" href='#' style='top: {{mapCell.y *
+    <a ng-repeat="mapCell in mapCells" style='top: {{mapCell.y *
       32}}px; left: {{mapCell.x * 32}}px;' class='map-cell tile'
       ng-click='executeTool(mapCell.x,mapCell.y)'></a>
   </div>

@@ -3,6 +3,10 @@
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+body {
+  font-family: Ubuntu, sans;
+}
+
 .board {
   position: relative;
 }
@@ -122,7 +126,7 @@
 }
 
 .selected-false {
-  border: 2px solid #eee;
+  border: 2px solid #ddd;
 }
 
 .grass {
@@ -135,8 +139,17 @@
 
 .toolbox {
   right: 0;
+  top: 0;
+  padding: 1em;
   position: absolute;
   width: 200px;
+  height: 100%;
+  background-color: #eee;
+}
+
+.toolbox h3 {
+  font-size: 16px;
+  margin: 0;
 }
 
 .toolbox ul{
@@ -149,6 +162,7 @@
   width: 32px;
   height: 32px;
   margin-right: 1em;
+  margin-bottom: 1em;
 }
 
 .object-types li a{
@@ -165,6 +179,7 @@
   list-style-type: none;
   display: inline-block;
   margin-right: 1em;
+  margin-bottom: 1em;
 }
 
 .tools li a{
@@ -187,6 +202,6 @@
 }
 
 .tools a.remove{
-  background-image: url('../images/glyphicons_free/glyphicons_207_remove_2.png');
+  background-image: url('../images/glyphicons_free/glyphicons_197_remove.png');
   background-repeat: no-repeat;
 }
