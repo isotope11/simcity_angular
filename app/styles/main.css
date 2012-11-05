@@ -30,8 +30,13 @@ body {
   background-repeat: no-repeat;
 }
 
-.actor-power {
-  background-position: -96px 0;
+.actor-power .power-drop{
+  position: absolute;
+  top: 21px;
+  left: 16px;
+  width: 5px;
+  height: 5px;
+  background-color: yellow;
 }
 .actor-water {
   position: relative;
@@ -42,7 +47,7 @@ body {
   left: 16px;
   width: 5px;
   height: 5px;
-  background: blue;
+  background-color: blue;
 }
 .actor-garbage {
   background: green;
@@ -50,7 +55,7 @@ body {
 }
 
 .powerplant {
-  background: yellow;
+  background-color: yellow;
 }
 
 .house {
@@ -144,6 +149,7 @@ body {
   position: absolute;
   width: 200px;
   height: 100%;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
   background-color: #eee;
 }
 
@@ -173,6 +179,30 @@ body {
 
 .object-types li a span{
   visibility: hidden;
+}
+
+.object-types li.road {
+  background-image: url('../images/glyphicons_free/glyphicons_026_road.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.object-types li.house {
+  background-image: url('../images/glyphicons_free/glyphicons_263_bank.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.powerplant {
+  background-image: url('../images/glyphicons_free/glyphicons_205_electricity.png');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.waterpump {
+  background-image: url('../images/glyphicons_free/glyphicons_092_tint.png ');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 
 .tools li{
