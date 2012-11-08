@@ -15,6 +15,7 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
   .run(function($rootScope){
       $rootScope.structures = [];
       $rootScope.mapCells = [];
+      $rootScope.cash = "0";
       (20).times(function(x){
         (20).times(function(y){
           $rootScope.mapCells.push({ x: x, y: y });
@@ -62,6 +63,12 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
         // Notify the scope of the changes
         $rootScope.$apply();
       };
+
+      // Update the amount of cash available
+      var updateCash = function(cash){
+        $rootScope.cash = cash;
+      };
+
       var addStructure = function(data){
         // Map the x and y to 20x, so they're more obviously visible...
         var existingStructure = $rootScope.structures.find(function(s){ return s.id == data.id; });
@@ -79,6 +86,16 @@ var angularSimcityApp = angular.module('angularSimcityApp', [])
       $rootScope.websocket = new WebSocket(wsUri);
       $rootScope.websocket.onopen    = function(evt) { console.log('open'); console.log(evt);  };
       $rootScope.websocket.onclose   = function(evt) { console.log('close'); console.log(evt); };
-      $rootScope.websocket.onmessage = function(evt) { updateMap(angular.fromJson(evt.data));     };
+      $rootScope.websocket.onmessage = function(evt) {
+        var data = angular.fromJson(evt.data);
+        switch(data.action){
+          case 'map':
+            updateMap(data.payload);
+            break;
+          case 'cash':
+            updateCash(data.payload);
+            break;
+        }
+      };
       $rootScope.websocket.onerror   = function(evt) { console.log('error'); console.log(evt); };
   });
